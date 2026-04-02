@@ -1,0 +1,265 @@
+.header__container{
+    /* coloquei a cor no background*/
+    background-color: var(--header__container-color);
+    display: flex;
+    justify-content: space-between;   /*alinhando eles em distacia igual*/
+    align-items: center; /*pondo no centro*/
+    padding: 20px;
+
+}
+.header__logo{
+    font-size: 30px;
+    color: var(--header-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header__menu{
+    gap:20px;/*distancia entre eles*/
+    display: flex;
+    justify-content: center;
+    list-style: none;/*tira as bolinhas*/
+
+}
+
+.header__link{
+    font-size: 17px;
+    color: var(--header__link-color);
+    text-decoration: none;
+}
+
+.header__icon{
+    font-size: 17px;
+    font-family:'Times New Roman', Times, serif;
+    color: var(--header__icon-color);
+    text-decoration: none;
+}
+
+.header__toggle{
+  display: none; /*nao aparece a aba do menu*/
+
+}
+
+
+/*--------------------------------------------luiza - banner --------------------------------------------*/
+
+.banner {
+  height: 320px; /**/
+  width: 100%;
+  /*imagem de fundo*/
+  background-image: url('https://images.pexels.com/photos/12034622/pexels-photo-12034622.jpeg');
+  
+  background-size: cover;
+  /* Faz a imagem ocupar todo o banner sem distorcer */
+
+  background-position: center;
+  /* parte principal da imagem fique centralizada */
+
+  text-align: center;    
+  /* centraliza o texto (esquerda va ficar no centro) */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Joga para o centro na vertical */
+
+  color: var(--banner-color);
+  /* Cor padrao dos textos do banner */
+
+  position: relative;
+  /* Necessario para permitir o overlay escuro por cima da imagem */
+}
+
+
+/* Overlay para escurecer a imagem de fundo */
+.banner::before {
+  position: absolute;
+  inset: 0;
+  /* inset: 0 ocupa todo o espaço do banner */
+
+  background-color: var(--banner__bg-color);
+  /* Camada preta transparente por cima da imagem
+  */
+}
+
+
+/* ======================= TÍTULOS ======================= */
+.banner__title {
+  font-size: 2.8rem;              /* Tamanho grande do título */
+  font-family: 'Oswald', sans-serif; /* Fonte usada no projeto */
+}
+
+/* Destaque do título (apenas a palavra dentro do span) */
+.banner__title--highlight {
+  color: var(--primary-color); /* Usa a cor principal do site */
+}
+
+
+.banner__subtitle {
+  margin-top: 10px;   /* Espaço entre título e subtítulo */
+  font-size: 1.2rem;  /* Tamanho do subtítulo */
+  opacity: 0.9;       /* Deixa o texto mais suave */
+}
+
+
+
+/* -----------------------------------------------pablo------------------------------------------------- */
+.products {
+  padding: 60px 20px;
+  background: var(--products-color) ; /* cor de fundo semelhante ao da imagem */
+}
+
+.products__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--products__title-color); /* mais escuro*/
+  
+}
+
+/* GRID */
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+/* CARD */
+.card {
+  background: var(--card-color) ;
+  border-radius: 12px;
+  overflow: hidden; /* para imagem colar nas bordas */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px); /* ELE SOBE O CARD UM POUQUINHO*/
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* COLOCA SOMBRA*/
+}
+
+/* Imagem */
+.card__image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden; /*PRA N VAZAR*/
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*preenche todo o espaço disponivel cortando sem zoar a proporção*/
+}
+
+/* Corpo do card */
+.card__body {
+  padding: 20px;
+}
+
+
+
+.card__title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--card__title-color);
+  font-weight: 700;
+}
+
+
+.card__description {
+  font-size: 0.95rem;
+  color: var(--card__description-color);
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--card__price-color) ;
+}
+
+
+/* Botão */
+.button--small {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  background: var(--button--small-bg);
+  color: var(--button--small-color);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.button--small:hover {
+  opacity: 0.8;
+}
+
+
+/* ----------------------------------------------lorena------------------------------------------------- */
+
+.categories {
+  padding: 40px 20px;             
+}
+
+/* Titulo da seção*/
+.categories__title {
+  text-align: center;            
+  font-size: 2rem;                  
+  margin-bottom: 25px;             
+}
+/* Área que contém os cards*/
+.categories__list {
+  display: flex;                   
+  justify-content: center;        
+  gap: 20px;                      
+  flex-wrap: wrap;                 
+}
+
+
+.category-item {
+  background: var(--category-item-bg); 
+  padding: 15px;                      
+  border-radius: 12px;               
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  text-align: center;                 
+  width: 160px;                       
+}
+
+
+/*A imagem do card*/
+.category-item__img {
+  width: 100%;                         
+  height: 120px;                      
+  border-radius: 10px;               
+  margin-bottom: 10px;               
+  object-fit: cover;                 
+}
+
+
+/* ----------------------------------------footer------------------------------------------------------ */
+.footer{
+    background-color: var(--footer-bg-color);
+    justify-items: center;   
+    padding: 10px;
+}
+
+.footer__text{
+    text-align: center; /*oondo no meio do footer*/
+}
+
+/*------------------------*/
+
+

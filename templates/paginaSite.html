@@ -1,0 +1,79 @@
+{%extends "layout.html" %}
+{%block css_adicional%}
+<style>
+.conteudo-geral {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+}
+
+.imagem-produto {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.info {
+    max-width: 400px;
+}
+
+.titulo {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.nome {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.valor {
+    font-size: 24px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.telefone {
+    margin: 15px 0;
+    color: #555;
+}
+
+.botaoComprar {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botaoComprar:hover {
+    background-color: #1b5e20;
+}
+</style>
+
+{%endblock%}
+{% block conteudo %} 
+<div class="conteudo-geral">
+        <img class="imagem-produto" src="/static/images.jpg">
+    
+        <div class="info">
+            <h1 class="nome">OVO DE COLHER</h1>
+    
+            <p class="descricao">blabbakaknakha</p>
+    
+            <p class="valor">R$ 89,90</p>
+    
+            <p class="disponibilidade">Disponivel</p>
+
+            <button class="botaoComprar">Compre agora</button>
+        </div>
+    
+    </div>
+{%endblock%}
