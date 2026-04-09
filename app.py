@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from model.comidas import mostrar_comidas
 
 app = Flask(__name__)
 

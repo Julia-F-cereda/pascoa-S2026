@@ -7,5 +7,6 @@ produto varchar(50),
 descricao varchar(50),
 destaque bool,
 valor float,
-imagem varchar(300)
+imagem varchar(300),
+disponibilidade bool
 );
