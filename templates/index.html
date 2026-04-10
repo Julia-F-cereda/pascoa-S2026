@@ -16,9 +16,8 @@
     <section class="categories">
       <div class="categories__container">
         <h2 class="categories__title">Escolha Rápida</h2>
-
-        <div class="categories__list">
           {%for rapidos in itens_rapidos%}
+        <div class="categories__list">
           <div class="category-item">
             <img
               src={{rapidos.imagem}}
@@ -27,8 +26,9 @@
             />
             <a href="" class="button button--small">EU QUERO</a>
           </div>
+               {%endfor%}
       </div>
-      {%endfor%}
+ 
     </section>
 
 

@@ -1,5 +1,5 @@
 USE produto;
-INSERT INTO itens
+INSERT INTO `produto`.`itens`
 (
 produto, 
 descricao, 
@@ -12,6 +12,14 @@ VALUES(
 "X-TUDO",
 "Compra que é top",
 "1",
+"40.00",
+"https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200",
+"1"
+),
+
+("X-TO",
+"Compra que é top",
+"0",
 "40.00",
 "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200",
 "1"
