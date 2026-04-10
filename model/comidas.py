@@ -1,15 +1,20 @@
 from database.conexao import conectar
 
-def mostrar_comidas_destaque(destaque:bool = 0):
+###############################################################################################################
+def mostrar_comidas_destaque():
     conexao, cursor = conectar()
-    #executado consulta genero
     
-    cursor.execute("SELECT codigo, produto, descricao, destaque, valor, imagem, disponibilidade FROM itens WHERE destaque=0;")
+    cursor.execute("SELECT codigo, produto, descricao, destaque, valor, imagem, disponibilidade FROM itens;")
     itens_destaque = cursor.fetchall()
-    #Fechando
+
     conexao.close()
     return itens_destaque
+    #morre aqui
+    #se fosse ter uma coluna com um nome do banco de dados e um nome diferente no programa, voce chama ele assim: valor as preco
+    #se o bool for um vai estar em rapidos
+    #se o bool for 0, vai star em destaque
 
+################################################################################################################
 def mostrar_comidas_rapidas(destaque:bool = 1):
     conexao, cursor = conectar()
 
@@ -21,7 +26,9 @@ def mostrar_comidas_rapidas(destaque:bool = 1):
     conexao.close()
 
     return itens_rapidos
+    #morre aqui
 
+################################################################################################################
 def inserir_comidas(produto:str, descricao:str, valor: str, imagem: str):
     conexao, cursor = conectar()
 
@@ -32,3 +39,14 @@ def inserir_comidas(produto:str, descricao:str, valor: str, imagem: str):
 
       
     conexao.close()
+
+#################################################################################################################
+#agora vai recuperar só um produto e na pagina produtos
+def mostrar_produto(codigo:str):
+    conexao, cursor = conectar()
+    
+    cursor.execute("""SELECT codigo, produto, descricao, destaque, valor, imagem, disponibilidade FROM itens WHERE codigo= %s""", [codigo])
+    produto = cursor.fetchone()
+
+    conexao.close()
+    return produto

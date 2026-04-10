@@ -16,7 +16,8 @@
     <section class="categories">
       <div class="categories__container">
         <h2 class="categories__title">Escolha Rápida</h2>
-          {%for rapidos in itens_rapidos%}
+          {%for rapidos in itens_rapidos%} 
+          <!-- #morreu aqui -->
         <div class="categories__list">
           <div class="category-item">
             <img
@@ -37,10 +38,11 @@
 <!-- Produtos do Menu -->
     <section class="products">
       <div class="products__container">
-        <h2 class="products__title">Nossos Destaques</h2>
+        <h2 class="products__title">CARDAPIO</h2>
 
         <div class="products__grid">
-          {% for linha in itens_destaque: %}
+          {% for linha in itens_destaque: %} 
+          <!-- #morreu aqui -->
           <article class="card" id={{linha.codigo}}>
             <div class="card__image-wrapper">
               <img

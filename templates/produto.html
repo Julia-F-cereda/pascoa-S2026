@@ -60,15 +60,19 @@
 
 {%endblock%}
 {% block conteudo %} 
+
+{%for linhas in produto%}
+{{produto == produto.codigo}}
+
 <div class="conteudo-geral">
-        <img class="imagem-produto" src="/static/src/hamburguer.jpg">
+        <img class="imagem-produto" src="{{produto.imagem}}">
     
         <div class="info">
-            <h1 class="nome">HAMBURGUER</h1>
+            <h1 class="nome">{{produto.nome}}</h1>
     
-            <p class="descricao">MUITO BOM</p>
+            <p class="descricao">{{produto.descricao}}</p>
     
-            <p class="valor">R$ 89,90</p>
+            <p class="valor">{{produto.valor}}</p>
     
             <p class="disponibilidade">Disponivel</p>
 
@@ -76,4 +80,6 @@
         </div>
     
     </div>
+
+{%endfor%}
 {%endblock%}
