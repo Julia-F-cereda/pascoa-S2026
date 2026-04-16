@@ -9,4 +9,10 @@ destaque bool,
 valor float,
 imagem varchar(300),
 disponibilidade bool
+)
+
+CREATE table if not exists login(
+codigo int not null primary key auto_increment,
+usuario varchar (50),
+senha varchar(200)
 );

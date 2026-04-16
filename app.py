@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from model.comidas import mostrar_comidas_destaque
 from model.comidas import mostrar_comidas_rapidas
 from model.comidas import mostrar_produto
+from model.login import inserir_usuario
 
 # from model.comidas import inserir_comidas
 
@@ -30,6 +31,22 @@ def site(codigo):
     produto = mostrar_produto(codigo)
     return render_template("produto.html", produto=produto)
 
+
+@app.route ("/login")
+def login():
+    return render_template("login.html")
+
+@app.route ("/cadastrar")
+def pg_cadastrar():
+    return render_template("cadastro.html")
+
+@app.route ("/cadastrar", methods=["POST"])
+def cadastro():
+    usuario = request.form.get("nome")
+    senha = request.form.get("senha")
+    inserir_usuario(usuario, senha)
+    return redirect("/login")
+    
 
 
 if __name__ == "__main__":
