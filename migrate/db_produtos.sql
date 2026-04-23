@@ -13,6 +13,7 @@ disponibilidade bool
 
 CREATE table if not exists login(
 codigo int not null primary key auto_increment,
+nome varchar (50),
 usuario varchar (50),
 senha varchar(200)
 );
