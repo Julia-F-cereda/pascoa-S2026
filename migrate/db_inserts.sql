@@ -32,3 +32,13 @@ VALUES(
 "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=200",
 "1"
 );
+
+INSERT INTO `produto`.`login`
+(nome,
+usuario,
+senha)
+VALUES
+('Godofredo', 
+'123',
+'Godo Frede');
+
