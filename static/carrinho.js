@@ -1,6 +1,7 @@
 async function mostrar_carrinho()
 {
-    const resposta = await fetch("http://10.110.134.2:8080/api/get/carrinho")
+    const resposta = await fetch("http://127.0.0.1:5000/api/get/carrinho")
+  
     if (!resposta.ok){
     }
     else{

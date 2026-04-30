@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, session 
+from flask import Flask, render_template, request, redirect, session, jsonify
 from model.comidas import mostrar_comidas_destaque
 from model.comidas import mostrar_comidas_rapidas
 from model.comidas import mostrar_produto
 from model.login import inserir_usuario
 from model.login import conferir_usuario
+from model.carrinho import recuperar_carrinho
 
 # from model.comidas import inserir_comidas
 
@@ -18,6 +19,7 @@ def rapidos():
     itens_destaque = mostrar_comidas_destaque() #morreu aqui
     return render_template("index.html", itens_rapidos=itens_rapidos, itens_destaque=itens_destaque) #morreu aqui
 
+# -------------------------------------------------------------------------------------------------------
 # @app.route("/")
 # def inserir():
 #     produto = request.form.get("card__title")
@@ -27,46 +29,73 @@ def rapidos():
  
 #     inserir_comidas(produto, descricao, valor, imagem)
 #     return redirect("/")
-
+# -------------------------------------------------------------------------------------------------------
 
 @app.route ("/produto/<codigo>")
 def site(codigo):
     produto = mostrar_produto(codigo)
     return render_template("produto.html", produto=produto)
 
+# -------------------------------------------------------------------------------------------------------
 
 @app.route ("/cadastro", methods = ["GET"])
 def pg_cadastro():
     return render_template("cadastro.html")
 
+# -------------------------------------------------------------------------------------------------------
+
 @app.route ("/cadastro", methods=["POST"])
 def cadastro():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
-    nome = request.form.get("nome")
-    if inserir_usuario(usuario, senha, nome):
+    if inserir_usuario(usuario, senha):
         return redirect ("/login")
     else:
         return "Informações incorretas"
-    
+
+# -------------------------------------------------------------------------------------------------------
 
 @app.route("/login", methods = ["GET"])
 def pg_login():
     return render_template("login.html")
 
+# -------------------------------------------------------------------------------------------------------
+
 @app.route("/login", methods = ["POST"])
 def login():
-    usuario = request.form.get("usuario")
+    usuario = request.form.get("nome")
     senha = request.form.get("senha")
 
     usuario_login= conferir_usuario(usuario,senha)
 
     if usuario_login:
-        session["usuario"] = usuario_login["nome"]
+        session["usuario_logado"] = usuario_login
         return redirect("/")
     else:
         return redirect("/login")
-    
 
+#--------------------------------------------------------------------------------------------------------
+
+@app.route("/logar/usuario", methods=["POST"])
+def logar_usuario():
+    usuario = request.form.get("nome")
+    senha = request.form.get("senha")
+
+    resultado = usuario.logar(usuario, senha)
+
+    if resultado:
+        session ["usuario_logado"] = resultado
+        return redirect("/")
+# -------------------------------------------------------------------------------------------------------
+
+@app.route("/api/get/carrinho", methods=["GET"])
+def api_get_carrinho():
+    login =session["usuario_logado"]["codigo"]
+    if "usuario_logado" in session:
+        carrinho = recuperar_carrinho(login)
+        return jsonify(carrinho), 200
+    else:
+        return jsonify({"message": "Usuario não logado"}), 401
+# -------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)

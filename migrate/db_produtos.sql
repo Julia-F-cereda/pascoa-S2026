@@ -20,10 +20,10 @@ senha varchar(200)
 
 CREATE table if not exists carrinho(
 cod_carrinho int auto_increment primary key,
-usuario varchar(50),
+cod_usuario int,
 data datetime default current_timestamp,
 finalizado bool,
-CONSTRAINT fk_carrinho_login FOREIGN KEY (usuario) REFERENCES  login(usuario)
+CONSTRAINT fk_carrinho_login FOREIGN KEY (cod_usuario) REFERENCES  login(codigo)
 );
 
 CREATE table if not exists item_carrinho(
@@ -32,5 +32,7 @@ cod_carrinho int,
 cod_itens int, 
 quantidade int default 1,
 CONSTRAINT fk_itemcarrinho_carrinho FOREIGN KEY (cod_carrinho) REFERENCES carrinho(cod_carrinho),
-CONSTRAINT fk_itemcarrinho_itens FOREIGN KEY(cod_produto) REFERENCES itens(codigo)
+CONSTRAINT fk_itemcarrinho_itens FOREIGN KEY(cod_itens) REFERENCES itens(codigo)
 );
+
+select * from login;

@@ -42,3 +42,22 @@ VALUES
 '123',
 'Godo Frede');
 
+INSERT INTO produto.carrinho
+ (nome,
+ finalizado)
+ VALUES
+ ('julia',
+ '0')
+ ;
+
+INSERT INTO produto.item_carrinho 
+(cod_item_carrinho,
+ cod_carrinho,
+ cod_produto,
+ quantidade)
+ VALUES
+ ('1',
+ '1',
+ '1',
+ '1')
+ ;

@@ -8,7 +8,7 @@ def inserir_usuario(usuario: str, senha: str, nome: str="Anonimo"):
 
 def conferir_usuario(usuario:str, senha:str) -> list:
         conexao, cursor = conectar()
-        cursor.execute(""" SELECT NOME FROM login WHERE USUARIO=%s AND SENHA=%s""", [usuario, senha])
+        cursor.execute(""" SELECT codigo, NOME FROM login WHERE USUARIO=%s AND SENHA=%s""", [usuario, senha])
         usuario = cursor.fetchone()
         conexao.close()
 
