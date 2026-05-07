@@ -5,6 +5,7 @@ from model.comidas import mostrar_produto
 from model.login import inserir_usuario
 from model.login import conferir_usuario
 from model.carrinho import recuperar_carrinho
+from model.carrinho import inserir_item
 
 # from model.comidas import inserir_comidas
 
@@ -97,5 +98,18 @@ def api_get_carrinho():
     else:
         return jsonify({"message": "Usuario não logado"}), 401
 # -------------------------------------------------------------------------------------------------------
+
+@app.route("/api/post/item_carrinho", methods=["POST"])
+def api_post_item_carrinho():
+    if "usuario_logado" in session:
+        cod_usuario = session["usuario_logado"] ["usuario"]
+        dados_json = request.get_json()
+        codigo_itens = dados_json.get("cod_itens")
+        quantidade = dados_json.get("quantidade")
+
+        inserir_item(cod_usuario, codigo_itens, quantidade)
+        return jsonify({"message":"inserido"}), 201
+    else:
+        return redirect("/login")
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,124 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DevBurger - Flex & Grid 2025</title>
+  <title>DevBurger - Carrinho Lateral</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap" rel="stylesheet"/>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="../static/src/style/reset.css" />
   <link rel="stylesheet" href="../static/src/style/variables.css" />
   <link rel="stylesheet" href="../static/src/style/main.css" />
   <link rel="stylesheet" href="../static/src/style/media.css" />
 
-
-
   <style>
-    /* Janela de compra */
+    /* --- APENAS O QUE É NECESSÁRIO PARA O CARRINHO --- */
+    
+    #cart-toggle { display: none; } /* Esconde o checkbox */
+
+    /* Transformando sua .janela em Sidebar */
     .janela {
+      position: fixed;
+      top: 0;
+      right: -350px; /* Escondido */
       width: 300px;
+      height: 100%;
+      z-index: 2000;
+      margin: 0; /* Remove o margin auto que centralizava */
+      transition: right 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0; /* Estilo sidebar */
+    }
+
+    /* Abre quando clica */
+    #cart-toggle:checked ~ .janela {
+      right: 0;
+    }
+
+    /* Ícone do carrinho que você pediu */
+    .icone-carrinho-fixo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      font-size: 24px;
+      cursor: pointer;
+      background: #27ae60;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Overlay para fechar ao clicar fora */
+    .overlay-carrinho {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1500;
+    }
+    #cart-toggle:checked ~ .overlay-carrinho { display: block; }
+
+    /* --- SEU CSS ORIGINAL ABAIXO (SEM ALTERAÇÕES) --- */
+    .janela {
       background: white;
       padding: 20px;
-      border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      margin: 40px auto; /* centraliza horizontal */
     }
-
-    .janela h2 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .produto {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0;
-    }
-
-    .total {
-      font-weight: bold;
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .botao {
-      width: 100%;
-      margin-top: 15px;
-      padding: 10px;
-      border: none;
-      background-color: #27ae60;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .botao:hover {
-      background-color: #219150;
-    }
+    .janela h2 { text-align: center; margin-bottom: 15px; }
+    .produto { display: flex; justify-content: space-between; margin: 10px 0; }
+    .total { font-weight: bold; margin-top: 15px; display: flex; justify-content: space-between; }
+    .botao { width: 100%; margin-top: 15px; padding: 10px; border: none; background-color: #27ae60; color: white; border-radius: 6px; cursor: pointer; }
+    .botao:hover { background-color: #219150; }
   </style>
 
   {% block css_adicional %}{% endblock %}
 </head>
-
 <body>
 
-<!-- Header -->
-<header class="header">
-  <div class="header__container">
-    <a href="#" class="header__logo">DevBurger</a>
+  <input type="checkbox" id="cart-toggle">
+  <label for="cart-toggle" class="icone-carrinho-fixo">🛒</label>
+  <label for="cart-toggle" class="overlay-carrinho"></label>
 
-    <nav class="header__nav">
-      <ul class="header__menu">
-        <li><a href="#" class="header__link">Home</a></li>
-        <li><a href="#menu" class="header__link">Cardápio</a></li>
-        <li><a href="#" class="header__link">Sobre</a></li>
-        <li><a href="#" class="header__link">Contato</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<div class="janela">
-  <h2>Seu Carrinho</h2>
-
-  <div class="produtos" id="produtos">
-    <div class="produto">
-      <span>Produto 1</span>
-      <span>R$ 49,90</span>
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">DevBurger</a>
+      <nav class="header__nav">
+        <ul class="header__menu">
+          <li><a href="#" class="header__link">Home</a></li>
+          <li><a href="#menu" class="header__link">Cardápio</a></li>
+          <li><a href="#" class="header__link">Sobre</a></li>
+          <li><a href="#" class="header__link">Contato</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="produto">
-      <span>Produto 2</span>
-      <span>R$ 79,90</span>
+  <div class="janela">
+    <label for="cart-toggle" style="cursor:pointer; font-size:20px;">&times; Fechar</label>
+    <h2>Seu Carrinho</h2>
+    <div class="produtos" id="produtos">
+      <div class="produto"><span>Produto 1</span><span>R$ 49,90</span></div>
+      <div class="produto"><span>Produto 2</span><span>R$ 79,90</span></div>
     </div>
-</div>
-
-  <div class="total">
-    <span>Total:</span>
-    <span>R$ 129,80</span>
+    <div class="total"><span>Total:</span><span>R$ 129,80</span></div>
+    <button class="botao">Finalizar Compra</button>
   </div>
 
-  <button class="botao">Finalizar Compra</button>
-</div>
+  {% block conteudo %}{% endblock %}
 
-<!-- CONTEÚDO -->
-{% block conteudo %}
+  <footer class="footer">
+    <p class="footer__text">DevBurger © 2025. Todos os direitos reservados.</p>
+  </footer>
 
-
-
-{% endblock %}
-
-<!-- Footer -->
-<footer class="footer">
-  <p class="footer__text">
-    DevBurger © 2025. Todos os direitos reservados.
-  </p>
-</footer>
-<script src="static/carrinho.js"></script>
+  <script src="static/carrinho.js"></script>
 </body>
 </html>

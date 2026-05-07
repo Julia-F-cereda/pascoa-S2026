@@ -25,3 +25,27 @@ async function mostrar_carrinho()
 }
 
 mostrar_carrinho()
+
+async function inserirItemCarrinho(cod_itens, quantidade=1) {
+    const resposta = await fetch("/api/post/item_carrinho", 
+                                            {
+                                            method: "POST", 
+                                            headers:{
+                                            "Content-Type": "application/json"
+                                                    }, 
+                                            body: JSON.stringify(
+                                            {
+                                                    "cod_itens": cod_itens,
+                                                    "quantidade": quantidade,
+                                            }
+                                            )
+                                        }
+                                    )
+
+    if (!resposta.OK)
+    {
+        alert("erro ao inserir item")
+    }
+    mostrar_carrinho();
+}
+    
