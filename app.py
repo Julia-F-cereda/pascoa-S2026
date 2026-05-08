@@ -104,7 +104,7 @@ def api_post_item_carrinho():
     if "usuario_logado" in session:
         cod_usuario = session["usuario_logado"] ["codigo"]
         dados_json = request.get_json()
-        codigo_itens = dados_json.get("cod_itens")
+        codigo_itens = dados_json.get("codigo")
         quantidade = dados_json.get("quantidade")
 
         inserir_item(cod_usuario, codigo_itens, quantidade)
