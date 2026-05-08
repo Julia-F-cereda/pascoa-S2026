@@ -95,8 +95,9 @@
     </div>
   </header>
 
+  
   <div class="janela">
-    <label for="cart-toggle" style="cursor:pointer; font-size:20px;">&times; Fechar</label>
+    <label for="cart-toggle" style="cursor:pointer; font-size:20px;"> Fechar</label>
     <h2>Seu Carrinho</h2>
     <div class="produtos" id="produtos">
       <div class="produto"><span>Produto 1</span><span>R$ 49,90</span></div>
@@ -112,6 +113,6 @@
     <p class="footer__text">DevBurger © 2025. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="static/carrinho.js"></script>
+  <script src="{{ url_for('static',filename='carrinho.js') }}"></script>
 </body>
 </html>

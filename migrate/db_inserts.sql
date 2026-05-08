@@ -61,5 +61,4 @@ INSERT INTO `produto`.`item_carrinho`
  VALUES
  ('1',
  '1',
- '1',
  '1');

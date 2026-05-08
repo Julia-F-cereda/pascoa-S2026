@@ -15,8 +15,8 @@ async function mostrar_carrinho()
             let linha = `
 
             <div class="produto">
-                <span>${dado.nome}</span>
-                <span>${dado.preco}</span>
+                <span>${dado.produto}</span>
+                <span>${dado.valor}</span>
             </div>
 `
         carrinho.innerHTML += linha
@@ -42,7 +42,7 @@ async function inserirItemCarrinho(cod_itens, quantidade=1) {
                                         }
                                     )
 
-    if (!resposta.OK)
+    if (!resposta.ok)
     {
         alert("erro ao inserir item")
     }

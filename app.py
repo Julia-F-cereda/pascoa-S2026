@@ -82,7 +82,7 @@ def logar_usuario():
     usuario = request.form.get("nome")
     senha = request.form.get("senha")
 
-    resultado = usuario.logar(usuario, senha)
+    resultado = conferir_usuario(usuario, senha)
 
     if resultado:
         session ["usuario_logado"] = resultado
@@ -102,7 +102,7 @@ def api_get_carrinho():
 @app.route("/api/post/item_carrinho", methods=["POST"])
 def api_post_item_carrinho():
     if "usuario_logado" in session:
-        cod_usuario = session["usuario_logado"] ["usuario"]
+        cod_usuario = session["usuario_logado"] ["codigo"]
         dados_json = request.get_json()
         codigo_itens = dados_json.get("cod_itens")
         quantidade = dados_json.get("quantidade")
