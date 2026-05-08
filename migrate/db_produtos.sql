@@ -18,6 +18,8 @@ usuario varchar (50),
 senha varchar(200)
 );
 
+
+
 CREATE table if not exists carrinho(
 cod_carrinho int auto_increment primary key,
 cod_usuario int,

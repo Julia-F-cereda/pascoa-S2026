@@ -42,22 +42,24 @@ VALUES
 '123',
 'Godo Frede');
 
-INSERT INTO produto.carrinho
- (nome,
- finalizado)
- VALUES
- ('julia',
- '0')
- ;
 
-INSERT INTO produto.item_carrinho 
-(cod_item_carrinho,
- cod_carrinho,
- cod_produto,
+
+insert into produto.item_carrinho
+cod_item_carrinho, cod_carrinho, cod_itens, quantidade
+
+INSERT INTO `produto`.`carrinho`
+(cod_usuario,
+finalizado)
+VALUES
+('1',
+'1')
+
+INSERT INTO `produto`.`item_carrinho`
+(cod_carrinho,
+ cod_itens,
  quantidade)
  VALUES
  ('1',
  '1',
  '1',
- '1')
- ;
+ '1');
